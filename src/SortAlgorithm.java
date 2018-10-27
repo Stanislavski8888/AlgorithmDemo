@@ -11,9 +11,11 @@ public class SortAlgorithm {
         // insertionSortDichotomy(array, array.length);
         // shellSort(array, array.length);
 
-        int[] arrayCopy = Arrays.copyOf(array, array.length);
-        mergeSortRecursion(array, 0, array.length);         // 递归实现
-        mergeSortIteration(arrayCopy, arrayCopy.length);    // 非递归实现
+        //        int[] arrayCopy = Arrays.copyOf(array, array.length);
+        //        mergeSortRecursion(array, 0, array.length);         // 递归实现
+        //        mergeSortIteration(arrayCopy, arrayCopy.length);    // 非递归实现
+
+        countingSort(array, array.length);
     }
 
     static int[] randomGenerateIntArray() {
@@ -283,7 +285,7 @@ public class SortAlgorithm {
      * <li>将另一序列剩下的所有元素直接
      * <li>到合并序列尾</li>
      * </ol>
-     * 
+     *
      * <li>分类 -------------- 内部比较排序</li>
      * <li>数据结构 -<li>------- 数组</li>
      * <li>最差时间复杂度 ---- O(nlogn)</li>
@@ -291,7 +293,7 @@ public class SortAlgorithm {
      * <li>平均时间复杂度 ---- O(nlogn)</li>
      * <li>所需辅助空间 ------ O(n)</li>
      * <li>稳定性 ------------ 稳定</li>
-     * 
+     *
      */
     static void merge(int A[], int left, int mid, int right) {  // 合并两个已排好序的数组A[left...mid]和A[mid+1...right]
         int len = right - left + 1;
@@ -362,7 +364,7 @@ public class SortAlgorithm {
      * <p>
      * 比如序列：{ 9, 5, 7, 5 }，堆顶元素是9，堆排序下一步将9和第二个5进行交换，得到序列 { 5, 5, 7, 9 }，再进行堆调整得到{ 7,
      * 5, 5, 9 }，重复之前的操作最后得到{ 5, 5, 7, 9 }从而改变了两个5的相对次序。
-     * 
+     *
      * <li>分类 -------------- 内部比较排序</li>
      * <li>数据结构 ---------- 数组</li>
      * <li>最差时间复杂度 ---- O(nlogn)</li>
@@ -370,7 +372,7 @@ public class SortAlgorithm {
      * <li>平均时间复杂度 ---- O(nlogn)</li>
      * <li>所需辅助空间 ------ O(1)</li>
      * <li>稳定性 ------------ 不稳定</li>
-     * 
+     *
      */
     static void heapify(int A[], int i, int size) // 从A[i]向下进行堆调整
     {
@@ -430,6 +432,14 @@ public class SortAlgorithm {
      * 主要是递归造成的栈空间的使用(用来保存left和right等局部变量)，取决于递归树的深度，一般为O(logn)，最差为O(n).</li>
      * <li>稳定性 ---------- 不稳定.</li>
      */
+    static void quickSort(int A[], int left, int right) {
+        if (left >= right)
+            return;
+        int pivot_index = partition(A, left, right); // 基准的索引
+        quickSort(A, left, pivot_index - 1);
+        quickSort(A, pivot_index + 1, right);
+    }
+
     static int partition(int A[], int left, int right) // 划分函数
     {
         int pivot = A[right]; // 这里每次都选择最后一个元素作为基准
@@ -442,15 +452,127 @@ public class SortAlgorithm {
             }
         }
         swap(A, tail + 1, right); // 最后把基准放到前一个子数组的后边，剩下的子数组既是大于基准的子数组
-                                  // 该操作很有可能把后面元素的稳定性打乱，所以快速排序是不稳定的排序算法
+        // 该操作很有可能把后面元素的稳定性打乱，所以快速排序是不稳定的排序算法
         return tail + 1; // 返回基准的索引
     }
 
-    static void quickSort(int A[], int left, int right) {
-        if (left >= right)
-            return;
-        int pivot_index = partition(A, left, right); // 基准的索引
-        quickSort(A, left, pivot_index - 1);
-        quickSort(A, pivot_index + 1, right);
+    /**
+     * 计数排序
+     * <p>
+     * 计数排序用到一个额外的计数数组C，根据数组C来将原数组A中的元素排到正确的位置。
+     * <p>
+     * 通俗地理解，例如有10个年龄不同的人，假如统计出有8个人的年龄不比小明大（即小于等于小明的年龄，这里也包括了小明），那
+     * 么小明的年龄就排在第8位，通过这种思想可以确定每个人的位置，也就排好了序。当然，年龄一样时需要特殊处
+     * 理（保证稳定性）：通过反向填充目标数组，填充完毕后将对应的数字统计递减，可以确保计数排序的稳定性。
+     * <p>
+     * 数排序的步骤如下：
+     * <ol>
+     * <li>统计数组A中每个值A[i]出现的次数，存入C[A[i]]</li>
+     * <li>从前向后，使数组C中的每个值等于其与前一项相加，这样数组C[A[i]]就变成了代表数组A中小于等于A[i]的元素个数</li>
+     * <li>反向填充目标数组B：将数组元素A[i]放在数组B的第C[A[i]]个位置（下标为C[A[i]] -
+     * 1），每放一个元素就将C[A[i]]递减</li>
+     * </ol>
+     * <p>
+     * 计数排序的时间复杂度和空间复杂度与数组A的数据范围（A中元素的最大值与最小值的差加上1）有关，因此对于数据范围很大的数组，计数排序需要大量时间和内存。
+     * <p>
+     * 例如：对0到99之间的数字进行排序，计数排序是最好的算法，然而计数排序并不适合按字母顺序排序人名，将计数排序用在基数排序算法中，能够更有效的排序数据范围很大的数组。
+     *
+     * <li>分类 ------------ 内部非比较排序</li>
+     * <li>数据结构 --------- 数组</li>
+     * <li>最差时间复杂度 ---- O(n + k)</li>
+     * <li>最优时间复杂度 ---- O(n + k)</li>
+     * <li>平均时间复杂度 ---- O(n + k)</li>
+     * <li>所需辅助空间 ------ O(n + k)</li>
+     * <li>稳定性 ----------- 稳定</li>
+     */
+    static void countingSort(int[] A, int n) {
+        final int k = 100;                  // 基数为100，排序[0,99]内的整数
+        int C[] = new int[k];               // 计数数组
+
+        for(int i = 0; i < n; i++) {        // 使C[i]保存着等于i的元素个数
+            C[A[i]]++;
+        }
+        printArray(C);
+        for (int i = 1; i < k; i++) {       // 使C[i]保存着小于等于i的元素个数，排序后元素i就放在第C[i]个输出位置上
+            C[i] = C[i] + C[i - 1];
+        }
+        printArray(C);
+        int B[] = new int[n];
+        for(int i = n - 1; i >= 0; i--) {   // 从后向前扫描保证计数排序的稳定性(重复元素相对次序不变)
+            B[--C[A[i]]] = A[i];            // 把每个元素A[i]放到它在输出数组B中的正确位置上
+            // 当再遇到重复元素时会被放在当前元素的前一个位置上保证计数排序的稳定性
+        }
+        printArray(B);
+        for(int i = 0; i < n; i++) {        // 把临时空间B中的数据拷贝回A
+            A[i] = B[i];
+        }
     }
+
+    /**
+     * 基数排序
+     * <p>
+     * 基数排序的发明可以追溯到1887年赫尔曼·何乐礼在打孔卡片制表机上的贡献。它是这样实现的：将所有待比较正整数统一为同样的
+     * 数位长度，数位较短的数前面补零。然后，从最低位开始进行基数为10的计数排序，一直到最高位计数排序完后，数列就变成一个有
+     * 序序列（利用了计数排序的稳定性）。
+     * <p>
+     * 基数排序的时间复杂度是O(n * dn)，其中n是待排序元素个数，dn是数字位数。这个时间复杂度不一定优于O(n log
+     * n)，dn的大小取决于数字位的选择（比如比特位数），和待排序数据所属数据类型的全集的大小；dn决定了进行多少轮处理， 而n是每轮处理的操作数目。
+     * <p>
+     * 如果考虑和比较排序进行对照，基数排序的形式复杂度虽然不一定更小，但由于不进行比较，因此其基本操作的代价较小，而且如果
+     * 适当的选择基数，dn一般不大于log n，所以基数排序一般要快过基于比较的排序，比如快速排序。由于整数也可以表达字符串
+     * （比如名字或日期）和特定格式的浮点数，所以基数排序并不是只能用于整数排序。
+     *
+     * <li>分类 ------------- 内部非比较排序</li>
+     * <li>数据结构 ---------- 数组</li>
+     * <li>最差时间复杂度 ---- O(n * dn)</li>
+     * <li>最优时间复杂度 ---- O(n * dn)</li>
+     * <li>平均时间复杂度 ---- O(n * dn)</li>
+     * <li>所需辅助空间 ------ O(n * dn)</li>
+     * <li>稳定性 ----------- 稳定</li>
+     */
+    static void lsdRadixSort(int[] A, int n) {      // 最低位优先基数排序
+        final int dn = 3;
+        for(int d = 1; d <= dn; d++) {              // 从低位到高位
+            countingSort(A, n, d);                  // 依据第d位数字对A进行计数排序
+        }
+    }
+
+    static int getDigit(int x, int d)               // 获得元素x的第d位数字
+    {
+        int radix[] = { 1, 1, 10, 100 };            // 最大为三位数，所以这里只要到百位就满足了
+        return (x / radix[d]) % 10;
+    }
+
+    static void countingSort(int A[], int n, int d) // 依据元素的第d位数字，对A数组进行计数排序
+    {
+        final int k = 10;
+        int[] C = new int[k];
+        for (int i = 0; i < k; i++)
+        {
+            C[i] = 0;
+        }
+        for (int i = 0; i < n; i++)
+        {
+            C[getDigit(A[i], d)]++;
+        }
+        for (int i = 1; i < k; i++)
+        {
+            C[i] = C[i] + C[i - 1];
+        }
+
+        int B[] = new int[n];
+        for (int i = n - 1; i >= 0; i--)
+        {
+            int dight = getDigit(A[i], d);  // 元素A[i]当前位数字为dight
+            B[--C[dight]] = A[i];           // 根据当前位数字，把每个元素A[i]放到它在输出数组B中的正确位置上
+            // 当再遇到当前位数字同为dight的元素时，会将其放在当前元素的前一个位置上保证计数排序的稳定性
+        }
+        for (int i = 0; i < n; i++)
+        {
+            A[i] = B[i];
+        }
+    }
+
+    /**桶排序*/
+
 }
