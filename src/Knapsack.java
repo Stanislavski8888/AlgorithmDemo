@@ -1,3 +1,8 @@
+/**
+ * 对于F(i,c)，有两种情况，将第i个物品加入和直接忽略第i个物品
+ * <br>
+ * <b>F(i,C) = max{F(i-1, C), v(i) + F(i-1, C-w(i))}</b>
+ **/
 public class Knapsack {
     private static final int LENGTH = 6;
     private static final int CAPACITY = 20;
