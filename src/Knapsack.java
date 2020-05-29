@@ -2,6 +2,15 @@
  * 对于F(i,c)，有两种情况，将第i个物品加入和直接忽略第i个物品
  * <br>
  * <b>F(i,C) = max{F(i-1, C), v(i) + F(i-1, C-w(i))}</b>
+ * <br>
+ * 相似问题
+ * <ul>
+ *     <li>leetcode 322</li>
+ *     <li>leetcode 377</li>
+ *     <li>leetcode 474</li>
+ *     <li>leetcode 139</li>
+ *     <li>leetcode 494</li>
+ * </ul>
  **/
 public class Knapsack {
     private static final int LENGTH = 6;
