@@ -1,13 +1,46 @@
-/*Definition for singly-linked list.*/
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode(int x) {
-        val = x;
-    }
-}
-
+/**
+ * Definition for singly-linked list. <br>
+ * 反转一个单链表。<br>
+ * <pre>
+ * 示例:
+ *   输入: 1->2->3->4->5->NULL
+ *   输出: 5->4->3->2->1->NULL
+ * </pre>
+ *
+ * 进阶: <br>
+ * 你可以迭代或递归地反转链表。你能否用两种方法解决这道题？ <br>
+ *
+ * <a href="https://leetcode-cn.com/problems/reverse-linked-list">206. 反转链表</a>
+ */
 public class ReverseListSolution {
+
+    public static void main(String[] args) {
+        ReverseListSolution reverseListSolution = new ReverseListSolution();
+        ListNode listNode1 = new ListNode(1);
+        ListNode listNode2 = new ListNode(2);
+        ListNode listNode3 = new ListNode(3);
+        ListNode listNode4 = new ListNode(4);
+        ListNode listNode5 = new ListNode(5);
+        listNode1.next = listNode2;
+        listNode2.next = listNode3;
+        listNode3.next = listNode4;
+        listNode4.next = listNode5;
+
+        ListNode listNode = listNode1;
+        while (listNode != null) {
+            System.out.print(listNode.val + " ");
+            listNode = listNode.next;
+        }
+
+        System.out.println();
+
+        ListNode listNodeRev = reverseListSolution.reverseListMine(listNode1);
+        while (listNodeRev != null) {
+            System.out.print(listNodeRev.val + " ");
+            listNodeRev = listNodeRev.next;
+        }
+    }
+
     // 我的方法
     public ListNode reverseListMine(ListNode head) {
         if (head == null) return null;
@@ -51,4 +84,10 @@ public class ReverseListSolution {
     }
 }
 
-
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int x) {
+        val = x;
+    }
+}

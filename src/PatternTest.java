@@ -4,7 +4,7 @@ import java.util.regex.Pattern;
 public class PatternTest {
 
     public static void main(String[] args) {
-        String src = "÷È×å1927to1939-2018-04-10 19:35";
+        String src = "1927to1939-2018-04-10 19:35";
         String regex = "\\-\\d{4}\\-\\d{2}\\-\\d{2}\\s\\d{2}:\\d{2}$";
 
         Pattern pattern = Pattern.compile(regex);
