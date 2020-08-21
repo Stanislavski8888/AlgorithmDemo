@@ -168,7 +168,7 @@ class LockRunnable implements Runnable {
 class LockConditionRunnable implements Runnable {
     private Lock lock;
     private String name;
-    private final int state;
+    private final int STATE;
     private Condition awaitCond;
     private Condition signalCond;
 
@@ -178,7 +178,7 @@ class LockConditionRunnable implements Runnable {
         this.lock = lock;
         awaitCond = await;
         signalCond = signal;
-        this.state = state;
+        this.STATE = state;
     }
 
     @Override
@@ -186,7 +186,7 @@ class LockConditionRunnable implements Runnable {
         try {
             lock.lock();
             for(int i = 0; i < PrintABC.COUNT; i++) {
-                if (PrintABC.state % 3 == state) {
+                if (PrintABC.state % 3 != STATE) {
                     awaitCond.await();
                 }
                 System.out.println(Thread.currentThread().getName() + ": "+ name);
