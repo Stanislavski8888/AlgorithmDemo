@@ -23,6 +23,7 @@ public class LeetCode84 {
         int[] numbers = Utils.genarateRandomArray(MAX, length);
 
         System.out.println("Max ans = " + leetCode84.largestRectangleArea(numbers));
+        System.out.println("Max ans = " + leetCode84.largestRectangleAreaOpt(numbers));
     }
 
     int largestRectangleArea(int[] heights) {

@@ -30,7 +30,7 @@ public class LinkNode {
         }
     }
 
-    public static class ListNode {
+    /*public static class ListNode {
         int val;
         ListNode next = null;
 
@@ -41,7 +41,7 @@ public class LinkNode {
         public ListNode() {
             // TODO Auto-generated constructor stub
         }
-    }
+    }*/
 
     /**
      * 方法一：利用变量存储，每k个节点之间逆序。
