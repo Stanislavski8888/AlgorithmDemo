@@ -1,4 +1,6 @@
 /**
+ * <a href="https://leetcode-cn.com/problems/reverse-linked-list">206. 反转链表</a>
+ * <p>
  * Definition for singly-linked list. <br>
  * 反转一个单链表。<br>
  * <pre>
@@ -10,7 +12,6 @@
  * 进阶: <br>
  * 你可以迭代或递归地反转链表。你能否用两种方法解决这道题？ <br>
  *
- * <a href="https://leetcode-cn.com/problems/reverse-linked-list">206. 反转链表</a>
  */
 public class ReverseListSolution {
 
