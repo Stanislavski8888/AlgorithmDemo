@@ -1,5 +1,3 @@
-import sun.misc.BASE64Encoder;
-
 import java.math.BigInteger;
 import java.text.DecimalFormat;
 

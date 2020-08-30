@@ -26,13 +26,13 @@ public class LeetCode19 {
 
         LeetCode19 instance = new LeetCode19();
         int n = (int) (Math.random() * 20);
-        while (n >= N) {
+        while (n > N || n <= 0) {
             n = (int) (Math.random() * 20);
         }
         System.out.println("n = " + n);
-        ListNode result = instance.removeNthFromEnd(head, n);
-//        ListNode result = instance.removeNthFromEndOfficial(head, n);
-        while (result.next != null) {
+//        ListNode result = instance.removeNthFromEnd(head, n);
+        ListNode result = instance.removeNthFromEndOfficial(head, n);
+        while (result != null) {
             System.out.print(result.val + " -> ");
             result = result.next;
         }
