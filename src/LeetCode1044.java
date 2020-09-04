@@ -1,6 +1,8 @@
 import java.util.HashSet;
 
 /**
+ * <a href="https://leetcode-cn.com/problems/longest-duplicate-substring">1044. 最长重复子串</a><br>
+ * <p>
  * 给出一个字符串 S，考虑其所有重复子串（S 的连续子串，出现两次或多次，可能会有重叠）。<br>
  * 返回任何具有最长可能长度的重复子串。（如果 S 不含重复子串，那么答案为 ""。）<br>
  * <br>
@@ -19,19 +21,22 @@ import java.util.HashSet;
  *   2 <= S.length <= 10^5
  *   S 由小写英文字母组成。
  * </pre>
- * <a href="https://leetcode-cn.com/problems/longest-duplicate-substring">1044. 最长重复子串</a>
  */
 public class LeetCode1044 {
     public static void main(String[] args) {
-
+        String string = Utils.generateEasyRepeatString(30);
+        System.out.println("string = " + string);
+        LeetCode1044 instance = new LeetCode1044();
+        String repeatStr = instance.longestDupSubstring(string);
+        System.out.println("repeatStr = " + repeatStr);
     }
 
     /**
-    Rabin-Karp with polynomial rolling hash.
-        Search a substring of given length
-        that occurs at least 2 times.
-        Return start position if the substring exits and -1 otherwise.
-        */
+     * Rabin-Karp with polynomial rolling hash.
+     * Search a substring of given length
+     * that occurs at least 2 times.
+     * Return start position if the substring exits and -1 otherwise.
+     */
     public int search(int L, int a, long modulus, int n, int[] nums) {
         // compute the hash of string S[:L]
         long h = 0;
@@ -59,11 +64,11 @@ public class LeetCode1044 {
         // convert string to array of integers
         // to implement constant time slice
         int[] nums = new int[n];
-        for (int i = 0; i < n; ++i) nums[i] = (int)S.charAt(i) - (int)'a';
+        for (int i = 0; i < n; ++i) nums[i] = (int) S.charAt(i) - (int) 'a';
         // base value for the rolling hash function
         int a = 26;
         // modulus value for the rolling hash function to avoid overflow
-        long modulus = (long)Math.pow(2, 32);
+        long modulus = (long) Math.pow(2, 32);
 
         // binary search, L = repeating string length
         int left = 1, right = n;
