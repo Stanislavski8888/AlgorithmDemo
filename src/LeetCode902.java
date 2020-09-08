@@ -51,11 +51,11 @@ public class LeetCode902 {
         System.out.println();
 
         LeetCode902 instance = new LeetCode902();
-        int result = instance.atMostNGivenDigitSet(D, N);
+        int result = instance.atMostNGivenDigitSetOfficial(D, N);
         System.out.println("result = " + result);
     }
 
-    public int atMostNGivenDigitSet(String[] D, int N) {
+    public int atMostNGivenDigitSetOfficial(String[] D, int N) {
         int B = D.length; // bijective-base B
         char[] ca = String.valueOf(N).toCharArray();
         int K = ca.length;
@@ -92,5 +92,30 @@ public class LeetCode902 {
         for (int x : A)
             ans = ans * B + x;
         return ans;
+    }
+
+    /**
+     * 动态规划
+     */
+    public int atMostNGivenDigitSet(String[] D, int N) {
+        String S = String.valueOf(N);
+        int K = S.length();
+        int[] dp = new int[K + 1];
+        dp[K] = 1;
+
+        for (int i = K - 1; i >= 0; --i) {
+            // compute dp[i]
+            int Si = S.charAt(i) - '0';
+            for (String d : D) {
+                if (Integer.valueOf(d) < Si)
+                    dp[i] += Math.pow(D.length, K - i - 1);
+                else if (Integer.valueOf(d) == Si)
+                    dp[i] += dp[i + 1];
+            }
+        }
+
+        for (int i = 1; i < K; ++i)
+            dp[0] += Math.pow(D.length, i);
+        return dp[0];
     }
 }

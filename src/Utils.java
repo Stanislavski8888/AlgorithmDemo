@@ -18,6 +18,21 @@ public class Utils {
         return numbers;
     }
 
+    public static int[] genaratePositiveNegative(int max, final int length) {
+        int[] numbers = new int[length];
+        for (int i = 0; i < length; i++) {
+            numbers[i] = (int) (Math.random() * max * (Math.random() > 0.5 ? 1 : -1));
+        }
+
+        StringBuilder sb = new StringBuilder("numbers = [");
+        for (int i = 0; i < length; i++) {
+            sb.append(numbers[i] + (i == (length - 1) ? "]" : ", "));
+        }
+        System.out.println(sb.toString());
+        return numbers;
+    }
+
+
     public static String generateRandomString(int length) {
         String str = "abcdefghijklmnopqrstuvwxyz";
         Random random = new Random();
