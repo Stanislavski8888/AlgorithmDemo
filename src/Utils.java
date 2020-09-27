@@ -32,6 +32,18 @@ public class Utils {
         return numbers;
     }
 
+    /**
+     * 随机生成二维数组
+     */
+    public static int[][] genarateTwoDimenArray(int column, int row, int max) {
+        int[][] twoDimen = new int[column][row];
+        for (int i = 0; i < twoDimen.length; i++) {
+            for (int j = 0; j < twoDimen[i].length; j++) {
+                twoDimen[i][j] = (int)(Math.random() * max);
+            }
+        }
+        return twoDimen;
+    }
 
     public static String generateRandomString(int length) {
         String str = "abcdefghijklmnopqrstuvwxyz";
@@ -80,6 +92,10 @@ public class Utils {
         System.out.println();
     }
 
+    /**
+     * 打印整型二维数组
+     * @param digit 元素所占的字符长度
+     */
     public static void printTwoDimenArray(int[][] array, int digit) {
         StringBuilder format = new StringBuilder();
         String formater = format.append("%").append(digit).append("d").toString();
