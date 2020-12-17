@@ -18,6 +18,37 @@ public class Utils {
         return numbers;
     }
 
+    public static int[] genarateHalfOddEvenArray(int max, final int length) {
+        int[] numbers = new int[length];
+        int k = 0;
+        int odd = 0;
+        int even = 0;
+        while (k < length) {
+            numbers[k] = (int) (Math.random() * max + 1);
+            if (numbers[k] % 2 == 0) {
+                even++;
+            } else {
+                odd++;
+            }
+            if (even > length / 2) {
+                even--;
+                continue;
+            }
+            if (odd > length / 2) {
+                odd--;
+                continue;
+            }
+            k++;
+        }
+
+        StringBuilder sb = new StringBuilder("numbers = [");
+        for (int i = 0; i < length; i++) {
+            sb.append(numbers[i] + (i == (length - 1) ? "]" : ", "));
+        }
+        System.out.println(sb.toString());
+        return numbers;
+    }
+
     public static int[] genaratePositiveNegative(int max, final int length) {
         int[] numbers = new int[length];
         for (int i = 0; i < length; i++) {
