@@ -1,4 +1,4 @@
-# PatternTest
+# AlgorithmDemo
 
 >Java系统提供的Arrays.sort函数。对于基础类型，底层使用快速排序。对于非基础类型，底层使用归并排序。请问是为什么？
 
