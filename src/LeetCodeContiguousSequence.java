@@ -1,3 +1,5 @@
+import utils.Utils;
+
 /**
  * <a href="https://leetcode-cn.com/problems/contiguous-sequence-lcci">面试题 16.17. 连续数列</a>
  * <p>

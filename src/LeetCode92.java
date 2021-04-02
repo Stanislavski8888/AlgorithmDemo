@@ -1,3 +1,5 @@
+import utils.ListNode;
+
 /**
  * <a href="https://leetcode-cn.com/problems/reverse-linked-list-ii/">92. 反转链表 II</a>
  * <p>
@@ -30,9 +32,9 @@ public class LeetCode92 {
         System.out.println("m = " + m + ", n = " + n);
 
         LeetCode92 instance = new LeetCode92();
-//        ListNode reverse = instance.reverseBetween(head, m, n);
+//        utils.ListNode reverse = instance.reverseBetween(head, m, n);
         ListNode reverse = instance.reverseBetweenOfficial(head, m, n);
-//        ListNode reverse = instance.reverseBetween(head, m, n);
+//        utils.ListNode reverse = instance.reverseBetween(head, m, n);
         System.out.println("After Reverse:");
         ListNode.printListNode(reverse);
 

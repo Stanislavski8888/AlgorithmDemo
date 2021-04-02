@@ -1,3 +1,5 @@
+import utils.ListNode;
+
 /**
  * <a href="https://leetcode-cn.com/problems/rotate-list/">61. 旋转链表</a><br>
  * 给定一个链表，旋转链表，将链表每个节点向右移动 k 个位置，其中 k 是非负数。
@@ -34,7 +36,7 @@ public class LeetCode61 {
 
         LeetCode61 instance = new LeetCode61();
         ListNode result = instance.rotateRight(listNode, K);
-//        ListNode result = instance.rotateRightOfficial(listNode, K);
+//        utils.ListNode result = instance.rotateRightOfficial(listNode, K);
         System.out.println("Result:");
         ListNode.printListNode(result);
     }

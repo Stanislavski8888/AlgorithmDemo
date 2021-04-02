@@ -1,6 +1,8 @@
+package utils;
+
 public class ListNode {
-    int val;
-    ListNode next = null;
+    public int val;
+    public ListNode next = null;
 
     public ListNode(int x) {
         this.val = x;
@@ -11,7 +13,7 @@ public class ListNode {
     }
 
     public static ListNode genarateListNode(int length) {
-        ListNode head = null; //new ListNode((int) (Math.random() * 20));
+        ListNode head = null; //new utils.ListNode((int) (Math.random() * 20));
         ListNode temp = null;
         for (int i = 0; i < length; i++) {
             if (temp == null) {
@@ -28,7 +30,7 @@ public class ListNode {
     }
 
     public static ListNode genarateSingleDigitNode(int length) {
-        ListNode head = null; //new ListNode((int) (Math.random() * 20));
+        ListNode head = null; //new utils.ListNode((int) (Math.random() * 20));
         ListNode temp = null;
         for (int i = 0; i < length; i++) {
             if (temp == null) {

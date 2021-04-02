@@ -1,3 +1,5 @@
+import utils.ListNode;
+
 /**
  * <a href="https://leetcode-cn.com/problems/reverse-linked-list">206. 反转链表</a>
  * <p>
@@ -85,10 +87,10 @@ public class ReverseListSolution {
     }
 }
 
-/*class ListNode {
+/*class utils.ListNode {
     int val;
-    ListNode next;
-    ListNode(int x) {
+    utils.ListNode next;
+    utils.ListNode(int x) {
         val = x;
     }
 }*/

@@ -1,3 +1,5 @@
+import utils.ListNode;
+
 /**
  * <a href="https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/">19. 删除链表的倒数第N个节点</a>
  * <p>
@@ -30,7 +32,7 @@ public class LeetCode19 {
             n = (int) (Math.random() * 20);
         }
         System.out.println("n = " + n);
-//        ListNode result = instance.removeNthFromEnd(head, n);
+//        utils.ListNode result = instance.removeNthFromEnd(head, n);
         ListNode result = instance.removeNthFromEndOfficial(head, n);
         while (result != null) {
             System.out.print(result.val + " -> ");
