@@ -1,3 +1,5 @@
+import utils.ListNode;
+
 /**
  * <a href="https://leetcode-cn.com/problems/remove-linked-list-elements/">203. 移除链表元素</a><br>
  * 删除链表中等于给定值 val 的所有节点。<br>
@@ -16,7 +18,7 @@ public class LeetCode203 {
         ListNode head = ListNode.genarateSingleDigitNode(length);
 
         LeetCode203 instance = new LeetCode203();
-//        ListNode result = instance.removeElements(head, value);
+//        utils.ListNode result = instance.removeElements(head, value);
         ListNode result = instance.removeElementsOfficial(head, value);
         System.out.println("Result:");
         ListNode.printListNode(result);

@@ -23,7 +23,7 @@
 public class LeetCode459 {
     public static void main(String[] args) {
         LeetCode459 leetCode = new LeetCode459();
-//        String str = Utils.generateRandomString(100);
+//        String str = utils.Utils.generateRandomString(100);
         String str = "abcdeabcdeabcde";
         System.out.println("str = " + str);
         System.out.println(leetCode.repeatedSubstringPattern(str));

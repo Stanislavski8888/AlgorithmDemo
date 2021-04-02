@@ -1,3 +1,5 @@
+import utils.ListNode;
+
 /**
  * <a href="https://leetcode-cn.com/problems/merge-k-sorted-lists/">23. 合并K个升序链表</a><br>
  * 给你一个链表数组，每个链表都已经按升序排列。<br>

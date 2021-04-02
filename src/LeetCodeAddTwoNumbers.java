@@ -1,3 +1,5 @@
+import utils.ListNode;
+
 /**
  * <a href="https://leetcode-cn.com/problems/add-two-numbers/">2.两数相加</a><br>
  * 给出两个 <strong>非空</strong> 的链表用来表示两个非负的整数。
@@ -20,7 +22,7 @@ public class LeetCodeAddTwoNumbers {
         ListNode listNode2 = ListNode.genarateSingleDigitNode((int)(Math.random() * 5 + 1));
 
         LeetCodeAddTwoNumbers instance = new LeetCodeAddTwoNumbers();
-//        ListNode result = instance.addTwoNumbers(listNode1, listNode2);
+//        utils.ListNode result = instance.addTwoNumbers(listNode1, listNode2);
         ListNode result = instance.addTwoNumbersOfficial(listNode1, listNode2);
         ListNode.printListNode(result);
     }

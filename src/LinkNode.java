@@ -1,3 +1,5 @@
+import utils.ListNode;
+
 import java.util.Stack;
 
 /**
@@ -30,15 +32,15 @@ public class LinkNode {
         }
     }
 
-    /*public static class ListNode {
+    /*public static class utils.ListNode {
         int val;
-        ListNode next = null;
+        utils.ListNode next = null;
 
-        ListNode(int val) {
+        utils.ListNode(int val) {
             this.val = val;
         }
 
-        public ListNode() {
+        public utils.ListNode() {
             // TODO Auto-generated constructor stub
         }
     }*/
