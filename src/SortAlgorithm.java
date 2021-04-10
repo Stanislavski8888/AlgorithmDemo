@@ -15,13 +15,15 @@ public class SortAlgorithm {
         //        mergeSortRecursion(array, 0, array.length);         // 递归实现
         //        mergeSortIteration(arrayCopy, arrayCopy.length);    // 非递归实现
 
-        countingSort(array, array.length);
+//        countingSort(array, array.length);
+        quickSort(array, 0, array.length - 1);
+        printArray(array);
     }
 
     static int[] randomGenerateIntArray() {
-        int[] randomArray = new int[20];
+        int[] randomArray = new int[10];
         for (int i = 0; i < randomArray.length; i++) {
-            randomArray[i] = 1 + (int) (Math.random() * 100);
+            randomArray[i] = 1 + (int) (Math.random() * 20);
         }
         printArray(randomArray);
         return randomArray;
@@ -278,7 +280,7 @@ public class SortAlgorithm {
      * <p>
      * 归并排序算法主要依赖归并(Merge)操作。归并操作指的是将两个已经排序的序列合并成一个序列的操作，归并操作步骤如下：
      * <ol>
-<li>   * <li>申请空间，使其大小为两个已经排序序列之和，该空间用来存放合并后的序列</li>
+     * <li>申请空间，使其大小为两个已经排序序列之和，该空间用来存放合并后的序列</li>
      * <li>设定两个指针，最初位置分别为两个已经排序序列的起始位置</li>
      * <li>比较两个指针所指向的元素，选择相对小<li>素放入到合并空间，并移动指针到下一位置</li>
      * <li>重复步骤3直到某一指针到达序列尾</li>
