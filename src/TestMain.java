@@ -1,5 +1,6 @@
 
 public class TestMain {
+    static String str = "我是中国人";
 
     public static void main(String[] args) {
         System.out.println(System.getProperty("java.ext.dirs"));
@@ -14,6 +15,10 @@ public class TestMain {
 
         System.out.println(Math.ceil(2.999999999999999999999999999999999));
         System.out.println(Math.floor(2.9999999999));
+        char[] chars = str.toCharArray();
+        for (char c : chars) {
+            System.out.println(c);
+        }
     }
 
 }

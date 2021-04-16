@@ -88,6 +88,21 @@ public class Utils {
         return sb.toString();
     }
 
+    /**
+     * 可显示字符在ASCII中范围为：32~126(十进制)[20~7E(十六进制)]
+     * @param length 生成字符串的长度
+     * @return randomString
+     */
+    public static String generateVisibleString(int length) {
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < length; i++) {
+            char c = (char)((int)(Math.random() * 95) + 32);
+            sb.append(c);
+        }
+        System.out.println("Visible String: " + sb.toString());
+        return sb.toString();
+    }
+
     public static String[] generateSubsetString(int length) {
         String str = "123456789";
         if (length > str.length()) return null;
