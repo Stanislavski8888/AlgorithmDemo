@@ -5,6 +5,13 @@ import java.util.Random;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 public class Utils {
+
+    /**
+     * 生成随机整型数组
+     * @param max
+     * @param length
+     * @return
+     */
     public static int[] genarateRandomArray(int max, final int length) {
         int[] numbers = new int[length];
         for (int i = 0; i < length; i++) {
@@ -15,10 +22,16 @@ public class Utils {
         for (int i = 0; i < length; i++) {
             sb.append(numbers[i] + (i == (length - 1) ? "]" : ", "));
         }
-        System.out.println(sb.toString());
+        System.out.println(sb);
         return numbers;
     }
 
+    /**
+     * 生成一半是奇数，一半是偶数的随机整型数组
+     * @param max
+     * @param length
+     * @return
+     */
     public static int[] genarateHalfOddEvenArray(int max, final int length) {
         int[] numbers = new int[length];
         int k = 0;
@@ -50,6 +63,12 @@ public class Utils {
         return numbers;
     }
 
+    /**
+     * 生成包含正负数的整型数组
+     * @param max
+     * @param length
+     * @return
+     */
     public static int[] genaratePositiveNegative(int max, final int length) {
         int[] numbers = new int[length];
         for (int i = 0; i < length; i++) {
